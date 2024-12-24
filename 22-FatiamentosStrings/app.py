@@ -29,3 +29,16 @@ print(variavel[4:7])
 print(variavel[:4]) # 4 não é incluido
 
 
+print(len(variavel))
+
+
+# passos para pular
+
+# padrão
+print(variavel[0:len(variavel):1])
+
+# pula de 2 em 2
+print(variavel[::2])
+
+# inverter string
+print(variavel[::-1])
