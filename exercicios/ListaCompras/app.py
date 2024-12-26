@@ -4,58 +4,53 @@ listaCompras = []
 
 while True:
     os.system("cls")
+    print("Lista de Compras")
+    print("1 - Adicionar Item")
+    print("2 - Remover Item")
+    print("3 - Listar Itens")
+    op = input("Escolha uma opção: ")
 
-    print("------ Lista de Compras ------")
-    print("1 - Ver a lista")
-    print("2 - Adicionar item na lista")
-    print("3 - Remover item na lista")
-    op = input("Digite uma opção: ")
-
-    if op not in '123' and len(op) == 1:
+    if op not in '123' or len(op) != 1:
         print("Opção inválida. Tente novamente.")
+        os.system("pause")
         continue
 
     match op:
         case '1':
             os.system("cls")
-            print("Lista Atual:")
-            
-            for indice, valor in enumerate(listaCompras):
-                print(f"{indice} - {valor}")
 
-            print(" ")
-            os.system("pause")
-        
-        case '2':
-            os.system("cls")
-            valor = input("Digite um item para adicionar na lista: ")
+            valor = input("Digite um item para adicionar: ")
 
-            if valor in listaCompras or valor == "":
-                print("Item inválido...")
+            if valor in listaCompras or not valor:
+                print("Erro ao adicionar")
+                os.system("pause")
                 continue
             
             listaCompras.append(valor)
-            
-            print(" ")
             print("Item adicionado com sucesso!")
-            print(" ")
             os.system("pause")
-        
-        case '3':
+            continue
+            
+        case '2':
             os.system("cls")
-            item = input("Digite o indice do item: ")
+
+            indice = input("Digite o indice do item para remover: ")
 
             try:
-                ind = int(item)
-                del listaCompras[ind - 1] 
-
-                print(" ")
+                indice = int(indice)
+                del listaCompras[indice]
                 print("Item removido com sucesso")
-                print(" ")
-                os.system("pause")
             except:
-                print("Erro ao apagar o indice da lista")
-                os.system("pause")
+                print("Erro ao remover")
+            
+            os.system("pause")
+            continue
 
-                
-                
+        case '3':
+            os.system("cls")
+
+            for indice, valor in enumerate(listaCompras):
+                print(f'{indice} - {valor}')
+            
+            os.system("pause")
+            continue
